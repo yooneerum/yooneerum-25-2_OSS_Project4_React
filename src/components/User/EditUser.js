@@ -4,12 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../Common/Loader";
 import "./User.css";
 const EditUser = () => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const getUserApi = "http://localhost:3000/user";
+  const getUserApi = "https://68dfbc80898434f41358c319.mockapi.io/user";
 
   useEffect(() => {
     getUser();
@@ -103,6 +103,45 @@ const EditUser = () => {
             id="phone"
             name="phone"
             value={user.phone}
+            onChange={handelInput}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="age" className="form-label">
+            Age
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="age"
+            name="age"
+            value={user.age}
+            onChange={handelInput}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="address" className="form-label">
+            Address
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="address"
+            name="address"
+            value={user.address}
+            onChange={handelInput}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="nation" className="form-label">
+            Nation
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="nation"
+            name="nation"
+            value={user.nation}
             onChange={handelInput}
           />
         </div>

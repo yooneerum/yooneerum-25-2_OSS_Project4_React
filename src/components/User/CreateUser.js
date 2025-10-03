@@ -4,13 +4,16 @@ import Loader from '../Common/Loader';
 import './User.css';
 const CreateUser = () => {
     const navigate = useNavigate();
-    const createUserApi = "http://localhost:3000/user"
+    const createUserApi = "https://68dfbc80898434f41358c319.mockapi.io/user"
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState({
         name: "",
         email: "",
-        phone: ""
+        phone: "",
+        age: "",
+        address: "",
+        nation: ""
     })
 
     const handelInput = (event) => {
@@ -35,7 +38,7 @@ const CreateUser = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully!');
-                setUser({name: "",email: "",phone: ""})
+                setUser({name: "",email: "",phone: "",age: "",address: "",nation: ""})
                 navigate('/show-user');
             } else {
                 console.error('Form submission failed!');
@@ -67,6 +70,18 @@ const CreateUser = () => {
                 <div className="mb-3">
                     <label for="pwd" className="form-label">Phone</label>
                     <input type="text" className="form-control" id="phone" name="phone" value={user.phone} onChange={handelInput} />
+                </div>
+                <div className="mb-3">
+                    <label for="age" className="form-label">Age</label>
+                    <input type="text" className="form-control" id="age" name="age" value={user.age} onChange={handelInput} />
+                </div>
+                <div className="mb-3 mt-3">
+                    <label for="address" className="form-label">Address</label>
+                    <input type="text" className="form-control" id="address" name="address" value={user.address} onChange={handelInput} />
+                </div>
+                <div className="mb-3">
+                    <label for="nation" className="form-label">Nation</label>
+                    <input type="text" className="form-control" id="nation" name="nation" value={user.nation} onChange={handelInput} />
                 </div>
                 <button type="submit" className="btn btn-primary submit-btn">Submit</button>
             </form>
