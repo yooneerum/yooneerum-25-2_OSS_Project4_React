@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loader from '../Common/Loader';
 import './User.css';
 const CreateUser = () => {
@@ -38,7 +38,7 @@ const CreateUser = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully!');
-                setUser({name: "",email: "",phone: "",age: "",address: "",nation: ""})
+                setUser({ name: "", email: "", phone: "", age: "", address: "", nation: "" })
                 navigate('/show-user');
             } else {
                 console.error('Form submission failed!');
@@ -46,7 +46,7 @@ const CreateUser = () => {
 
         } catch (error) {
             setError(error.message);
-        } finally{
+        } finally {
             setIsLoading(false);
         }
     }
@@ -54,8 +54,8 @@ const CreateUser = () => {
     return (
         <div className='user-form'>
             <div className='heading'>
-            {isLoading && <Loader />}
-            {error && <p>Error: {error}</p>}
+                {isLoading && <Loader />}
+                {error && <p>Error: {error}</p>}
                 <p>User Form</p>
             </div>
             <form onSubmit={handelSubmit}>
@@ -73,7 +73,7 @@ const CreateUser = () => {
                 </div>
                 <div className="mb-3">
                     <label for="age" className="form-label">Age</label>
-                    <input type="text" className="form-control" id="age" name="age" value={user.age} onChange={handelInput} />
+                    <input type="number" className="form-control" id="age" name="age" min="0" max="120" step="1" value={user.age} onChange={handelInput} />
                 </div>
                 <div className="mb-3 mt-3">
                     <label for="address" className="form-label">Address</label>

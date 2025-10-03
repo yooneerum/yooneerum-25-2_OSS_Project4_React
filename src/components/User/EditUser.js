@@ -62,8 +62,8 @@ const EditUser = () => {
   return (
     <div className="user-form">
       <div className="heading">
-      {isLoading && <Loader />}
-      {error && <p>Error: {error}</p>}
+        {isLoading && <Loader />}
+        {error && <p>Error: {error}</p>}
         <p>Edit Form</p>
       </div>
       <form onSubmit={handelSubmit}>
@@ -111,10 +111,13 @@ const EditUser = () => {
             Age
           </label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="age"
             name="age"
+            min="0"
+            max="120"
+            step="1"
             value={user.age}
             onChange={handelInput}
           />
